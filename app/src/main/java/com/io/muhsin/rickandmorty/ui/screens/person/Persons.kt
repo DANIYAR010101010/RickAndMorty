@@ -1,0 +1,32 @@
+package com.io.muhsin.rickandmorty.ui.screens.person
+
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.io.muhsin.rickandmorty.ui.items.CharacterItem
+
+
+@Composable
+fun Persons() {
+    val viewModel = hiltViewModel<PersonViewModel>()
+    val navController = NavController
+    val allCharacters = viewModel.allMovies.observeAsState(listOf()).value
+    viewModel.getAllCharacters()
+    Surface(Modifier.fillMaxSize()) {
+        LazyColumn(Modifier.padding(20.dp)) {
+            items(allCharacters.take(10)) { item ->
+                if (item != null) {
+                    CharacterItem(item = item, navController = navController)
+                }
+            }
+        }
+    }
+}
