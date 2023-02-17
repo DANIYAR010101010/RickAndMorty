@@ -1,6 +1,7 @@
 package com.io.muhsin.rickandmorty.ui.screens.main
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.LeadingIconTab
 import androidx.compose.material.TabRow
@@ -10,36 +11,38 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.google.accompanist.pager.*
 import com.io.muhsin.rickandmorty.R
+import com.io.muhsin.rickandmorty.ui.navigation.Screens
 import com.io.muhsin.rickandmorty.ui.tablayout.TabItem
 import kotlinx.coroutines.launch
 
 
 @Composable
-fun MainScreen() {
+fun MainScreen(navController: NavController) {
     Column {
-        Row() {
-            val textState = remember { mutableStateOf("") }
-            TextField(value = textState.value,
-                onValueChange = { textState.value },
-                placeholder = { Text(text = "Введите текст") },
-                modifier = Modifier
-                    .padding(vertical = 4.dp, horizontal = 18.dp),
-                leadingIcon = {
-                    Image(painter = painterResource(id = R.drawable.ic_search_24),
-                        contentDescription = "")
-                }
-            )
-        }
+            Row(modifier = Modifier.padding(vertical = 12.dp, horizontal = 20.dp))
+            {
+                Image(painter = painterResource(id = R.drawable.ic_search_24),
+                    modifier = Modifier
+                        .size(32.dp)
+                        .clickable {
+                            navController.navigate(Screens.SearchScreen.route)
+                        },
+                    contentDescription = "")
+            }
         mainContent()
+
     }
+
 }
 @OptIn(ExperimentalPagerApi::class)
 @Composable

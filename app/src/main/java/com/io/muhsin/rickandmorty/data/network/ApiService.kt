@@ -1,23 +1,29 @@
 package com.io.muhsin.rickandmorty.data.network
 
-import androidx.annotation.IntRange
-import com.io.muhsin.rickandmorty.data.models.character.Character
-import com.io.muhsin.rickandmorty.data.models.episode.Episode
-import com.io.muhsin.rickandmorty.data.models.location.LocationX
+
+import com.io.muhsin.rickandmorty.models.character.Character
+import com.io.muhsin.rickandmorty.models.character.Info
+import com.io.muhsin.rickandmorty.models.character.Result
+import com.io.muhsin.rickandmorty.models.episode.Episode
+import com.io.muhsin.rickandmorty.models.location.LocationX
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
+
     @GET("character")
     suspend fun getAllCharacter(
-        @Query("q")query :String? = null,
-        @Query("pages")@IntRange(from =  1) page :Int = 1,
-        @Query("count")@IntRange(from =  1,to = Long.MAX_VALUE) pageSize :Int = DEFAULT_BUFFER_SIZE
+        @Query("page") page: Int
     ): Response<Character>
 
     @GET("location")
-    suspend fun getLocation(): Response<LocationX>
+    suspend fun getLocation(
+        @Query("page") page: Int
+    ): Response<LocationX>
+
     @GET("episode")
-    suspend fun getEpisode(): Response<Episode>
+    suspend fun getEpisode(
+        @Query("page") page: Int
+    ): Response<Episode>
 }

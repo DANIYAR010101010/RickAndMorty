@@ -1,6 +1,6 @@
-package com.io.muhsin.rickandmorty.data.models.location
+package com.io.muhsin.rickandmorty.models.character
 
-data class InfoX(
+data class Info(
     var count: Int? = null,
     var next: String? = null,
     var pages: Int? = null,

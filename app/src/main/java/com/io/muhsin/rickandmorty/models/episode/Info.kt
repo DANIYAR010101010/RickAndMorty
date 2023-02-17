@@ -1,4 +1,4 @@
-package com.io.muhsin.rickandmorty.data.models.character
+package com.io.muhsin.rickandmorty.models.episode
 
 data class Info(
     var count: Int? = null,

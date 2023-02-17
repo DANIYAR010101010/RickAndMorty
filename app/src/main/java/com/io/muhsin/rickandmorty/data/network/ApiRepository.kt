@@ -1,14 +1,42 @@
 package com.io.muhsin.rickandmorty.data.network
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import com.io.muhsin.rickandmorty.data.network.pagingsource.PagingSourceCharacters
+import com.io.muhsin.rickandmorty.data.network.pagingsource.PagingSourceEpisodes
+import com.io.muhsin.rickandmorty.data.network.pagingsource.PagingSourceLocation
 import javax.inject.Inject
 
 class ApiRepository@Inject constructor(private val apiService: ApiService) {
 
-    suspend fun getAllCharacters()= apiService.getAllCharacter()
+    fun getAllCharacters() = Pager(
+        config = PagingConfig(
+            pageSize = 5,
+        ),
+        pagingSourceFactory = {
+            PagingSourceCharacters(apiService)
+        }
+    ).flow
 
-    suspend fun getLocation()= apiService.getLocation()
+     fun getLocation()= Pager(
+        config = PagingConfig(
+            pageSize = 5,
+        ),
+        pagingSourceFactory = {
+            PagingSourceLocation(apiService)
+        }
+    ).flow
 
-    suspend fun getEpisode()= apiService.getEpisode()
+    fun getEpisode()=  Pager(
+        config = PagingConfig(
+            pageSize = 5,
+        ),
+        pagingSourceFactory = {
+            PagingSourceEpisodes(apiService)
+        }
+    ).flow
+
+
 
 
 }

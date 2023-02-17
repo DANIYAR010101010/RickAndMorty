@@ -1,6 +1,6 @@
-package com.io.muhsin.rickandmorty.data.models.episode
+package com.io.muhsin.rickandmorty.models.episode
 
-data class Result(
+data class ResultZ(
     var air_date: String? = null,
     var characters: List<String?>? = null,
     var created: String? = null,

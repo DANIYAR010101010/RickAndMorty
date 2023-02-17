@@ -12,6 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.items
 import com.io.muhsin.rickandmorty.ui.characterItem.LocationItem
 import com.io.muhsin.rickandmorty.ui.items.EpisodeItem
 import com.io.muhsin.rickandmorty.ui.screens.location.LocationViewModel
@@ -21,11 +23,11 @@ import com.io.muhsin.rickandmorty.ui.screens.location.LocationViewModel
 fun Episodes() {
     val viewModel = hiltViewModel<EpisodeViewModel>()
     val navController = NavController
-    val allEpisodes = viewModel.location.observeAsState(listOf()).value
-    viewModel.getEpisode()
+    val allEpisodes = viewModel.getEpisodes().collectAsLazyPagingItems()
+    viewModel.getEpisodes()
     Surface(Modifier.fillMaxSize()) {
         LazyColumn(Modifier.padding(20.dp)) {
-            items(allEpisodes.take(10)) { item ->
+            items(items = allEpisodes, key = { it.id.toString() }) { item ->
                 if (item != null) {
                     EpisodeItem(item = item, navController = navController)
                 }

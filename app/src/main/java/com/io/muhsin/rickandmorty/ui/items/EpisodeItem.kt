@@ -1,7 +1,5 @@
 package com.io.muhsin.rickandmorty.ui.items
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -11,16 +9,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil.compose.rememberImagePainter
 
 @Composable
-fun EpisodeItem(item: com.io.muhsin.rickandmorty.data.models.episode.Result, navController: NavController.Companion) {
+fun EpisodeItem(item: com.io.muhsin.rickandmorty.models.episode.ResultZ, navController: NavController.Companion) {
     Card(elevation = 4.dp,
         modifier = Modifier
             .padding(top = 8.dp)
-            .clickable {
-                // navController.navigate(Screens.DetailsScreen.route+"/${item.id}")
-            }
+
     ) {
         Row(modifier = Modifier
             .fillMaxWidth()

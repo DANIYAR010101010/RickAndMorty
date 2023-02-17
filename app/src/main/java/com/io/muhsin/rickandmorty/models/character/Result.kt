@@ -1,8 +1,12 @@
-package com.io.muhsin.rickandmorty.data.models.character
+package com.io.muhsin.rickandmorty.models.character
 
-import com.io.muhsin.rickandmorty.data.models.character.Location
-import com.io.muhsin.rickandmorty.data.models.character.Origin
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.io.muhsin.rickandmorty.models.character.Location
+import com.io.muhsin.rickandmorty.models.character.Origin
+import java.io.Serializable
 
+@Entity(tableName = "result")
 data class Result(
     var created: String? = null,
     var episode: List<String?>? = null,
@@ -16,4 +20,4 @@ data class Result(
     var status: String? = null,
     var type: String? = null,
     var url: String? = null
-)
+): Serializable

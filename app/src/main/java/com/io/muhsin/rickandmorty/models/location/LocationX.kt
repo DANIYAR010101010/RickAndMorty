@@ -1,4 +1,4 @@
-package com.io.muhsin.rickandmorty.data.models.location
+package com.io.muhsin.rickandmorty.models.location
 
 data class LocationX(
     var info: InfoX? = InfoX(),

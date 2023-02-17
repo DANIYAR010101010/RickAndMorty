@@ -1,6 +1,7 @@
-package com.io.muhsin.rickandmorty.di
+package com.io.muhsin.rickandmorty.data.di
 
 import com.io.muhsin.rickandmorty.data.network.ApiService
+import com.io.muhsin.rickandmorty.utils.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +14,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
     @Provides
-    fun baseUrl() = "https://rickandmortyapi.com/api/"
+    fun baseUrl() = BASE_URL
 
     @Provides
     @Singleton

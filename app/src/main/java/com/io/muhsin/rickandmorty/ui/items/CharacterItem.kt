@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
-import com.io.muhsin.rickandmorty.data.models.character.Result
+import com.io.muhsin.rickandmorty.models.character.Result
 
 @Composable
 fun CharacterItem(item: Result, navController: NavController.Companion) {
