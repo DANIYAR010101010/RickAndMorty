@@ -2,10 +2,11 @@ package com.io.muhsin.rickandmorty.data.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.io.muhsin.rickandmorty.models.search.SearchResponse
 
 
-@Database(entities = [Result::class], version = 1, exportSchema = true)
+@Database(entities = [SearchResponse::class], version = 1, exportSchema = true)
 abstract class AppDataBase: RoomDatabase(){
 
-    abstract fun getResultDao():ResultDao
+    abstract fun getResponseDao():ResultDao
 }

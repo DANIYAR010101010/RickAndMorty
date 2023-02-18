@@ -19,9 +19,7 @@ fun CharacterItem(item: Result, navController: NavController.Companion) {
     Card(elevation = 4.dp,
         modifier = Modifier
             .padding(top = 8.dp)
-            .clickable {
-                // navController.navigate(Screens.DetailsScreen.route+"/${item.id}")
-            }
+            .clickable {}
     ) {
         Row(modifier = Modifier
             .fillMaxWidth()

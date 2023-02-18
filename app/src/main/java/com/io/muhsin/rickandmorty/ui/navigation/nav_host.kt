@@ -5,17 +5,17 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.io.muhsin.rickandmorty.ActivityViewModel
 import com.io.muhsin.rickandmorty.ui.screens.episode.Episodes
+import com.io.muhsin.rickandmorty.ui.screens.filter.FilterScreen
 import com.io.muhsin.rickandmorty.ui.screens.location.Locations
 import com.io.muhsin.rickandmorty.ui.screens.main.MainScreen
 import com.io.muhsin.rickandmorty.ui.screens.person.Persons
-import com.io.muhsin.rickandmorty.ui.screens.search.Search
 
 sealed class Screens(val route: String) {
     object MainScreen : Screens("main_screen")
     object Persons : Screens("persons_screen")
     object Locations : Screens("location_screen")
     object Episodes : Screens("episodes_screen")
-    object SearchScreen : Screens("search_screen")
+    object FilterScreen : Screens("filter_screen")
 
 }
 @Composable
@@ -34,8 +34,8 @@ fun NavHost(navController: NavHostController,viewModel: ActivityViewModel) {
         composable(Screens.Episodes.route) {
             Episodes()
         }
-        composable(Screens.SearchScreen.route) {
-           Search()
+        composable(Screens.FilterScreen.route) {
+            FilterScreen(navController = navController)
         }
     }
 }

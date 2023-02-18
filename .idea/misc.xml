@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/user/AndroidStudioProjects/RickAndMorty/app/src/main/res/drawable/ic_arrow_back_24.xml" value="0.1005" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/RickAndMorty/app/src/main/res/drawable/ic_close_24.xml" value="0.1005" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/RickAndMorty/app/src/main/res/drawable/ic_filter_24.xml" value="0.1005" />
         <entry key="..\:/Users/user/AndroidStudioProjects/RickAndMorty/app/src/main/res/drawable/ic_search_24.xml" value="0.1" />
       </map>
     </option>
