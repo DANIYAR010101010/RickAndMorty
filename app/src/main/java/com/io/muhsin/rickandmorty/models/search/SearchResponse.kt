@@ -11,4 +11,15 @@ data class SearchResponse(
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
     var name: String? = null
-):Serializable
+):Serializable{
+    fun doesMatchSearchQuery(query: String): Boolean {
+        val matchingCombinations = listOf(
+            "$name"
+        )
+
+        return matchingCombinations.any {
+            it.contains(query, ignoreCase = true)
+        }
+    }
+}
+

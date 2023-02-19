@@ -5,38 +5,34 @@ import androidx.paging.PagingConfig
 import com.io.muhsin.rickandmorty.data.network.pagingsource.PagingSourceCharacters
 import com.io.muhsin.rickandmorty.data.network.pagingsource.PagingSourceEpisodes
 import com.io.muhsin.rickandmorty.data.network.pagingsource.PagingSourceLocation
-import kotlinx.coroutines.flow.asFlow
 import javax.inject.Inject
 
 class ApiRepository@Inject constructor(private val apiService: ApiService) {
 
-    suspend fun getResults(query: String, pageNumber: Int) =
-        apiService.getResult(query = query, page = pageNumber).asFlow()
-
-    fun getAllCharacters() = Pager(
+    fun getAllCharacters(name: String) = Pager(
         config = PagingConfig(
             pageSize = 5,
         ),
         pagingSourceFactory = {
-            PagingSourceCharacters(apiService)
+            PagingSourceCharacters(apiService,name)
         }
     ).flow
 
-     fun getLocation()= Pager(
+     fun getLocation(name: String)= Pager(
         config = PagingConfig(
             pageSize = 5,
         ),
         pagingSourceFactory = {
-            PagingSourceLocation(apiService)
+            PagingSourceLocation(apiService,name)
         }
     ).flow
 
-    fun getEpisode()=  Pager(
+    fun getEpisode(name: String)=  Pager(
         config = PagingConfig(
             pageSize = 5,
         ),
         pagingSourceFactory = {
-            PagingSourceEpisodes(apiService)
+            PagingSourceEpisodes(apiService,name)
         }
     ).flow
 

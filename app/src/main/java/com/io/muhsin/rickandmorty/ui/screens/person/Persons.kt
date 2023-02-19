@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -16,14 +18,14 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.io.muhsin.rickandmorty.models.character.Result
 import com.io.muhsin.rickandmorty.ui.items.CharacterItem
+import com.io.muhsin.rickandmorty.ui.screens.main.MainViewModel
 
 
 @Composable
 fun Persons() {
-    val viewModel = hiltViewModel<PersonViewModel>()
+    val viewModel = hiltViewModel<MainViewModel>()
     val navController = NavController
-    val allCharacters = viewModel.getAllCharacters().collectAsLazyPagingItems()
-    viewModel.getAllCharacters()
+    val allCharacters = viewModel.persons.collectAsState().value.collectAsLazyPagingItems()
     Surface(Modifier.fillMaxSize()) {
         LazyColumn(Modifier.padding(20.dp)) {
             items(items = allCharacters, key = { it.id.toString() }) { item ->

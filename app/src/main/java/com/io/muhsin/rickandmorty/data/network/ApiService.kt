@@ -15,22 +15,19 @@ interface ApiService {
 
     @GET("character")
     suspend fun getAllCharacter(
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("name") name: String,
     ): Response<Character>
 
     @GET("location")
     suspend fun getLocation(
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("name") name: String,
     ): Response<LocationX>
 
     @GET("episode")
     suspend fun getEpisode(
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("name") name: String,
     ): Response<Episode>
-
-    @GET("character")
-    suspend fun getResult(
-        @Query("q") query: String,
-        @Query("page") page: Int= 1
-    ):List<SearchResponse>
 }

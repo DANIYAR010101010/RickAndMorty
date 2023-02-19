@@ -5,8 +5,9 @@ import androidx.paging.PagingState
 import com.io.muhsin.rickandmorty.data.network.ApiService
 import com.io.muhsin.rickandmorty.models.location.ResultX
 
-class PagingSourceLocation (
+class PagingSourceLocation(
     private val apiService: ApiService,
+    private val name: String,
 ) : PagingSource<Int, ResultX>() {
     override fun getRefreshKey(state: PagingState<Int, ResultX>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
@@ -18,7 +19,7 @@ class PagingSourceLocation (
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ResultX> {
         return try {
             val page = params.key ?: 1
-            val response = apiService.getLocation(page = page)
+            val response = apiService.getLocation(page = page, name)
 
             LoadResult.Page(
                 data = response.body()?.results ?: emptyList(),

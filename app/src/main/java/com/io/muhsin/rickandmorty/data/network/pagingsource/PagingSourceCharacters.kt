@@ -7,6 +7,7 @@ import com.io.muhsin.rickandmorty.models.character.Result
 
 class PagingSourceCharacters(
     private val apiService: ApiService,
+    private val name: String,
 ) : PagingSource<Int, Result>() {
     override fun getRefreshKey(state: PagingState<Int, Result>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
@@ -15,10 +16,10 @@ class PagingSourceCharacters(
         }
     }
 
-    override suspend fun load(params: LoadParams<Int>):LoadResult<Int, Result> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Result> {
         return try {
             val page = params.key ?: 1
-            val response = apiService.getAllCharacter(page = page)
+            val response = apiService.getAllCharacter(page = page, name)
 
             LoadResult.Page(
                 data = response.body()?.results ?: emptyList(),

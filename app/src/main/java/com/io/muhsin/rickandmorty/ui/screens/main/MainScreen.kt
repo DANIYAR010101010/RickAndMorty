@@ -12,12 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import androidx.paging.compose.collectAsLazyPagingItems
 import com.google.accompanist.pager.*
 import com.io.muhsin.rickandmorty.R
 import com.io.muhsin.rickandmorty.ui.navigation.Screens
@@ -29,7 +27,6 @@ import kotlinx.coroutines.launch
 fun MainScreen(navController: NavController) {
 
     val viewModel = hiltViewModel<MainViewModel>()
-    val textState = remember { mutableStateOf(TextFieldValue("")) }
 
     Column {
         Row(modifier = Modifier
@@ -41,7 +38,10 @@ fun MainScreen(navController: NavController) {
             TextField(value = value,
                 onValueChange = { newText ->
                     value = newText
+                    viewModel.searchCharacters(newText)
                 },
+                singleLine = true
+                ,
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
