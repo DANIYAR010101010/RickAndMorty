@@ -10,10 +10,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.io.muhsin.rickandmorty.models.location.ResultX
-import com.io.muhsin.rickandmorty.ui.screens.main.MainViewModel
+import com.io.muhsin.rickandmorty.MainViewModel
 
 @Composable
-fun LocationItem(item: ResultX, navController: NavController.Companion,viewModel:MainViewModel) {
+fun LocationItem(item: ResultX, navController: NavController.Companion,viewModel: MainViewModel) {
     Card(elevation = 4.dp,
         modifier = Modifier
             .padding(top = 8.dp)

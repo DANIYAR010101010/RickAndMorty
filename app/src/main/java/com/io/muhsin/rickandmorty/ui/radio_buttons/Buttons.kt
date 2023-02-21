@@ -1,57 +1,32 @@
-package com.io.muhsin.rickandmorty.ui.screens.filter
+package com.io.muhsin.rickandmorty.ui.radio_buttons
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material.Button
-import androidx.compose.material.Card
-import androidx.compose.material.RadioButton
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import com.io.muhsin.rickandmorty.R
-import com.io.muhsin.rickandmorty.ui.navigation.Screens
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.io.muhsin.rickandmorty.MainViewModel
 
-@Composable
-fun FilterScreen(navController: NavController) {
-    Row(Modifier.padding(16.dp)) {
-        Image(
-            painter = painterResource(id = R.drawable.ic_arrow_back_24),
-            modifier = Modifier
-                .size(38.dp)
-                .clickable {
-                    navController.navigate(Screens.MainScreen.route)
-                },
-            contentDescription = "",
-        )
-    }
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Buttons()
-        Button(onClick = { /*TODO*/ },
-            modifier = Modifier.padding(top = 40.dp)
-        ) {
-            Text(text = "Применить")
-        }
-    }
-}
 
 @Composable
 fun Buttons() {
+
+    val viewModel = hiltViewModel<MainViewModel>()
+
+
     val radioOptions = listOf("Жив", "Мертв", "Неизвестно")
     val radioOptions2 = listOf("Человек", "Гуманоид", "Пришелец")
     val radioOptions3 = listOf("Мужской", "Женский", "Неизвестно")
+
     var selectedItem by remember {
         mutableStateOf(radioOptions[0])
     }
@@ -63,10 +38,12 @@ fun Buttons() {
     }
 
     Column(
-        Modifier.padding(top = 100.dp, start = 20.dp, end = 20.dp)
+        Modifier.padding(30.dp)
     ) {
-        Card(Modifier.padding(4.dp), elevation = 4.dp){
-            Column(modifier = Modifier.selectableGroup().padding(8.dp)) {
+        Card(Modifier.padding(4.dp), elevation = 4.dp) {
+            Column(modifier = Modifier
+                .selectableGroup()
+                .padding(8.dp)) {
                 Text(text = "Статус",
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp
@@ -94,8 +71,10 @@ fun Buttons() {
                 }
             }
         }
-        Card (Modifier.padding(4.dp), elevation = 4.dp){
-            Column(modifier = Modifier.selectableGroup().padding(8.dp)) {
+        Card(Modifier.padding(4.dp), elevation = 4.dp) {
+            Column(modifier = Modifier
+                .selectableGroup()
+                .padding(8.dp)) {
                 Text(text = "Раса",
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp)
@@ -124,7 +103,9 @@ fun Buttons() {
         }
         Card(Modifier.padding(4.dp), elevation = 4.dp) {
 
-            Column(modifier = Modifier.selectableGroup().padding(8.dp)) {
+            Column(modifier = Modifier
+                .selectableGroup()
+                .padding(8.dp)) {
                 Text(text = "Пол",
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp)
@@ -150,6 +131,23 @@ fun Buttons() {
                     }
                 }
             }
+        }
+    }
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+
+            },
+            modifier = Modifier
+                .padding(bottom = 60.dp, start = 34.dp, end = 32.dp)
+                .fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow)
+        ) {
+            Text(text = "Применить", modifier = Modifier)
+
         }
     }
 }

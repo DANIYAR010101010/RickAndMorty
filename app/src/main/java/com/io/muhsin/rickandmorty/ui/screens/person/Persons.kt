@@ -6,19 +6,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.key
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
-import com.io.muhsin.rickandmorty.models.character.Result
 import com.io.muhsin.rickandmorty.ui.items.CharacterItem
-import com.io.muhsin.rickandmorty.ui.screens.main.MainViewModel
+import com.io.muhsin.rickandmorty.MainViewModel
 
 
 @Composable

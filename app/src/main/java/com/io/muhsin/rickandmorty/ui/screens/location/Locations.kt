@@ -13,7 +13,7 @@ import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.io.muhsin.rickandmorty.ui.characterItem.LocationItem
-import com.io.muhsin.rickandmorty.ui.screens.main.MainViewModel
+import com.io.muhsin.rickandmorty.MainViewModel
 
 
 @Composable

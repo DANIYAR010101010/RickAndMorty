@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.io.muhsin.rickandmorty.ui.navigation.NavHost
-import com.io.muhsin.rickandmorty.ui.screens.main.MainViewModel
 import com.io.muhsin.rickandmorty.ui.theme.RickAndMortyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,9 +15,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             RickAndMortyTheme {
-                val viewModel = hiltViewModel<ActivityViewModel>()
+                val viewModel = hiltViewModel<MainViewModel>()
                 val navController = rememberNavController()
+
                 NavHost(navController = navController, viewModel = viewModel)
+
             }
         }
     }

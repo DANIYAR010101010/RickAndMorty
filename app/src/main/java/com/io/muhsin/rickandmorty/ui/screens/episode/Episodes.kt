@@ -3,7 +3,6 @@ package com.io.muhsin.rickandmorty.ui.screens.episode
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -14,7 +13,7 @@ import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.io.muhsin.rickandmorty.ui.items.EpisodeItem
-import com.io.muhsin.rickandmorty.ui.screens.main.MainViewModel
+import com.io.muhsin.rickandmorty.MainViewModel
 
 
 @Composable

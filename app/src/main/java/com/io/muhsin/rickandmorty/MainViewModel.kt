@@ -1,4 +1,4 @@
-package com.io.muhsin.rickandmorty.ui.screens.main
+package com.io.muhsin.rickandmorty
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,6 +18,7 @@ class MainViewModel @Inject constructor(private val repository: ApiRepository) :
     private val _persons = repository.getAllCharacters("").cachedIn(viewModelScope)
     private val _episodes = repository.getEpisode("").cachedIn(viewModelScope)
     private val _locations = repository.getLocation("").cachedIn(viewModelScope)
+
     var persons = MutableStateFlow(_persons)
     var episodes = MutableStateFlow(_episodes)
     var locations = MutableStateFlow(_locations)
